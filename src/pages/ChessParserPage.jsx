@@ -56,7 +56,7 @@ const ChessParserPage = () => {
         formData.append('file', file);
 
         try {
-            const response = await fetch(`http://localhost:8001/api/extract?t=${Date.now()}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/extract?t=${Date.now()}`, {
                 method: 'POST',
                 body: formData,
             });
