@@ -76,9 +76,9 @@ const LandingPage = () => {
                         <div className="mt-16 sm:mt-24 pt-8 border-t border-white/5 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-12 pointer-events-auto">
                             {[
                                 { label: "Accuracy", value: "99.8%" },
-                                { label: "Processing", value: "< 2s" },
-                                { label: "Games Parsed", value: "10k+" },
-                                { label: "Active Users", value: "500+" }
+                                { label: "Processing", value: "< 3s" },
+                                { label: "Games Parsed", value: "100+" },
+                                { label: "Active Users", value: "+" }
                             ].map((stat, i) => (
                                 <div key={i}>
                                     <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{stat.value}</div>
