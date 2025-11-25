@@ -6,6 +6,24 @@ import CustomCursor from '../components/CustomCursor';
 const LandingPage = () => {
     const navigate = useNavigate();
 
+    // Check if backend is running when the page loads
+    useEffect(() => {
+        const checkBackendHealth = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api`);
+                if (!response.ok) {
+                    throw new Error(`Backend returned: ${response.statusText}`);
+                }
+                const data = await response.json();
+                console.log('✅ Backend Status:', data);
+            } catch (error) {
+                console.error('❌ Backend connection failed:', error.message);
+            }
+        };
+
+        checkBackendHealth();
+    }, []); // Empty dependency array means this runs once on mount
+
     return (
         <div className="relative w-full bg-[#0a0a0a] overflow-x-hidden text-white selection:bg-cyan-500 selection:text-black font-sans">
             <CustomCursor />
