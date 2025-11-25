@@ -10,7 +10,12 @@ const LandingPage = () => {
     useEffect(() => {
         const checkBackendHealth = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/api`);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
                 if (!response.ok) {
                     throw new Error(`Backend returned: ${response.statusText}`);
                 }
