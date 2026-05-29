@@ -34,7 +34,7 @@ const ChessParserPage = () => {
                     newInvalidMoves.add(i);
                     break;
                 }
-            } catch (err) {
+            } catch {
                 newInvalidMoves.add(i);
                 break;
             }
@@ -164,7 +164,7 @@ const ChessParserPage = () => {
                                     disabled={currentMoveIndex === -1}
                                     className="px-4 py-2 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors border border-cyan-500/30 text-cyan-300 font-bold"
                                 >
-                                    ← Prev
+                                    Prev
                                 </button>
                                 <span className="text-slate-400 font-mono w-20 text-center">
                                     {currentMoveIndex === -1 ? "Start" : `${Math.floor(currentMoveIndex / 2) + 1}${currentMoveIndex % 2 === 0 ? '.' : '...'}`}
@@ -174,7 +174,7 @@ const ChessParserPage = () => {
                                     disabled={currentMoveIndex >= moves.length - 1}
                                     className="px-4 py-2 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors border border-cyan-500/30 text-cyan-300 font-bold"
                                 >
-                                    Next →
+                                    Next
                                 </button>
                             </div>
                         </div>
@@ -187,7 +187,7 @@ const ChessParserPage = () => {
                                 Extracted Moves
                                 {invalidMoves.size > 0 && (
                                     <span className="ml-auto text-xs bg-red-500/20 text-red-400 px-3 py-1 rounded-full border border-red-500/30">
-                                        ⚠️ {invalidMoves.size} Invalid
+                                        Invalid: {invalidMoves.size}
                                     </span>
                                 )}
                             </h2>
@@ -223,7 +223,7 @@ const ChessParserPage = () => {
                                                         }`}
                                                 />
                                                 {isInvalid && (
-                                                    <span className="text-red-400 text-xs ml-1" title="Invalid move">⚠️</span>
+                                                    <span className="text-red-400 text-xs ml-1" title="Invalid move">!</span>
                                                 )}
                                             </div>
                                         );

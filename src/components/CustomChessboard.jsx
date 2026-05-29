@@ -22,7 +22,7 @@ const CustomChessboard = ({ position, size = 500 }) => {
                     });
                     colIndex++;
                 } else {
-                    colIndex += parseInt(char);
+                    colIndex += parseInt(char, 10);
                 }
             }
         });
@@ -38,8 +38,18 @@ const CustomChessboard = ({ position, size = 500 }) => {
 
     const getPieceSymbol = (piece) => {
         const pieces = {
-            'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
-            'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n': '♞', 'p': '♟'
+            K: String.fromCharCode(9812),
+            Q: String.fromCharCode(9813),
+            R: String.fromCharCode(9814),
+            B: String.fromCharCode(9815),
+            N: String.fromCharCode(9816),
+            P: String.fromCharCode(9817),
+            k: String.fromCharCode(9818),
+            q: String.fromCharCode(9819),
+            r: String.fromCharCode(9820),
+            b: String.fromCharCode(9821),
+            n: String.fromCharCode(9822),
+            p: String.fromCharCode(9823),
         };
         return pieces[piece] || '';
     };
@@ -53,7 +63,6 @@ const CustomChessboard = ({ position, size = 500 }) => {
         for (let col = 0; col < 8; col++) {
             const isLight = (row + col) % 2 === 0;
             const piece = pieces.find(p => p.row === row && p.col === col);
-            const squareName = getSquareName(row, col);
             const isWhitePiece = piece && piece.piece === piece.piece.toUpperCase();
 
             squares.push(

@@ -60,7 +60,7 @@ const PlayPage = () => {
                 setTimeout(() => makeAiMove(game.fen()), 500);
             }
             return true;
-        } catch (e) {
+        } catch {
             return false;
         }
     }
@@ -91,7 +91,7 @@ const PlayPage = () => {
                         onClick={() => navigate('/')}
                         className="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10 text-sm font-medium text-slate-300"
                     >
-                        ← Back
+                        Back
                     </button>
                     <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
                         Play vs AI

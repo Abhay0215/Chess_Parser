@@ -18,33 +18,33 @@ const CustomCursor = () => {
     }, []);
 
     // Smooth cursor and trail animation loop
-    const animate = () => {
-        // Main cursor (smooth follow)
-        setCursorPos(prev => ({
-            x: prev.x + (mousePos.x - prev.x) * 0.15,
-            y: prev.y + (mousePos.y - prev.y) * 0.15
-        }));
-
-        // Trail logic
-        setTrail(prevTrail => {
-            const newTrail = [...prevTrail];
-            newTrail[0] = {
-                x: newTrail[0].x + (mousePos.x - newTrail[0].x) * 0.2,
-                y: newTrail[0].y + (mousePos.y - newTrail[0].y) * 0.2
-            };
-            for (let i = 1; i < newTrail.length; i++) {
-                newTrail[i] = {
-                    x: newTrail[i].x + (newTrail[i - 1].x - newTrail[i].x) * 0.25,
-                    y: newTrail[i].y + (newTrail[i - 1].y - newTrail[i].y) * 0.25
-                };
-            }
-            return newTrail;
-        });
-
-        requestRef.current = requestAnimationFrame(animate);
-    };
-
     useEffect(() => {
+        const animate = () => {
+            // Main cursor (smooth follow)
+            setCursorPos(prev => ({
+                x: prev.x + (mousePos.x - prev.x) * 0.15,
+                y: prev.y + (mousePos.y - prev.y) * 0.15
+            }));
+
+            // Trail logic
+            setTrail(prevTrail => {
+                const newTrail = [...prevTrail];
+                newTrail[0] = {
+                    x: newTrail[0].x + (mousePos.x - newTrail[0].x) * 0.2,
+                    y: newTrail[0].y + (mousePos.y - newTrail[0].y) * 0.2
+                };
+                for (let i = 1; i < newTrail.length; i++) {
+                    newTrail[i] = {
+                        x: newTrail[i].x + (newTrail[i - 1].x - newTrail[i].x) * 0.25,
+                        y: newTrail[i].y + (newTrail[i - 1].y - newTrail[i].y) * 0.25
+                    };
+                }
+                return newTrail;
+            });
+
+            requestRef.current = requestAnimationFrame(animate);
+        };
+
         requestRef.current = requestAnimationFrame(animate);
         return () => cancelAnimationFrame(requestRef.current);
     }, [mousePos]);
@@ -86,7 +86,7 @@ const CustomCursor = () => {
                     transform: 'translate(-50%, -50%) rotate(15deg)',
                 }}
             >
-                ♞
+                &#9822;
             </div>
         </>
     );
